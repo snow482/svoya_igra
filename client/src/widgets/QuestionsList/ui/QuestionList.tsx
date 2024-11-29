@@ -18,15 +18,7 @@ export function QuestionList() {
       <div className="questions">
       {questions.length > 0 ? (
        questions.map((question) => {
-
-          const objQuestion = {
-            id: question.id,
-            category: question.Category.name,
-            description: question.description,
-            
-          };
-
-          return <QuestionItem key={question.id} question={objQuestion} />;
+          return <QuestionItem key={question.id} question={question} />;
         })
       ) : (
         <h2>No data</h2>

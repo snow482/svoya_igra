@@ -1,1 +1,1 @@
-export { BookUpdate } from './ui/QuestionUpdate'
+export { QuestionUpdate } from './ui/QuestionUpdate'
