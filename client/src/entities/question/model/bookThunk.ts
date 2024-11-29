@@ -5,7 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 
 // Импортируем тип AuthResponse из локального индекса
-import { Book, BookCreate, BookList, BookUpdate } from ".";
+import { Question } from ".";
 
 // Импортируем класс UserService из папки api для работы с API
 import { BookService } from "../api";
