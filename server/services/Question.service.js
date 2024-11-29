@@ -3,11 +3,14 @@ const { Question, Category } = require("../db/models");
 class QuestionService {
   static async getQuestions() {
     try {
-      const questions = await Question.findAll({ include: Category });
+      const questions = await Question.findAll({
+        include: Category,
+      });
+
       return questions;
     } catch (error) {
       console.log(error);
-      throw new Error(error.message);
+      throw new Error(error.message);ц
     }
   }
 }
