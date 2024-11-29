@@ -6,6 +6,7 @@ class QuestionService {
       const questions = await Question.findAll({
         include: Category,
       });
+
       return questions;
     } catch (error) {
       console.log(error);

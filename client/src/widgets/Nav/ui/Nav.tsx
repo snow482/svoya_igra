@@ -24,7 +24,7 @@ export function Nav() {
                 <Link to={CLIENT_ROUTES.HOME}>Home</Link>
               </li>
               <li>
-                <Link to={CLIENT_ROUTES.BOOKS}>Books</Link>
+                <Link to={CLIENT_ROUTES.QUESTIONS}>Questions</Link>
               </li>
               <li>
                 <a onClick={handlerLogout} href="#">Logout</a>

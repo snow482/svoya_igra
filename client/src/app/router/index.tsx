@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./Layout/Layout";
-import { AuthPage, BooksPage, HomePage, RegPage, NotFound, BookUpdate } from "@/pages";
+import { AuthPage, QuestionsPage, HomePage, RegPage, NotFound, QuestionUpdate } from "@/pages";
 
 export enum CLIENT_ROUTES {
     HOME = '/',
     AUTH = '/auth',
     REG = '/registration',
-    BOOKS = '/books',
+    QUESTIONS = '/questions',
     NOT_FOUND = '*',
-    UPDATE = '/books/:id'
+    UPDATE = '/question/:id'
 }
 
 export const router = createBrowserRouter([
@@ -29,8 +29,8 @@ export const router = createBrowserRouter([
                 element: <RegPage />,
             },
             {
-                path: CLIENT_ROUTES.BOOKS,
-                element: <BooksPage />,
+                path: CLIENT_ROUTES.QUESTIONS,
+                element: <QuestionsPage />,
             },
             {
                 path: CLIENT_ROUTES.NOT_FOUND,
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: CLIENT_ROUTES.UPDATE,
-                element: <BookUpdate />,
+                element: <QuestionUpdate />,
             },
         ]
     }

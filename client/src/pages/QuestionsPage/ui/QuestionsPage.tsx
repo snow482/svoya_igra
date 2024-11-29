@@ -1,4 +1,5 @@
-// не должен принимать props
+import QuestionsList from "@/widgets/QuestionsList";
+
 export function QuestionsPage() {
   return (
     <>
