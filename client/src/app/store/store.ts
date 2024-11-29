@@ -1,6 +1,6 @@
 // Импортируем редьюсер для пользователя из файла user.ts
 import userReducer from "@/entities/user/model/userSlice";
-import bookReducer from "@/entities/book/model/bookSlice"
+import questionReducer from "@/entities/question/model/questionSlice"
 // Импортируем функцию configureStore из Redux Toolkit
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -13,7 +13,7 @@ import { configureStore } from "@reduxjs/toolkit";
 const store = configureStore({
   reducer: {
     user: userReducer,
-    books: bookReducer,
+    questions: questionReducer,
   },
 });
 
