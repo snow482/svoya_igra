@@ -1,27 +1,18 @@
-// Импортируем функцию createAsyncThunk из reduxjs/toolkit для создания асинхронных thunk-функций
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-// Импортируем тип AxiosError из axios для обработки ошибок API
 import { AxiosError } from "axios";
-
-// Импортируем тип AuthResponse из локального индекса
-import { Question } from ".";
-
-// Импортируем класс UserService из папки api для работы с API
+import { QuestionList } from ".";
 import { QuestionService } from "../api";
 
-// Определяем тип RejectValue для значения rejectWithValue
 type RejectValue = {
   message: string;
 };
 
-// Создаем перечисление с префиксом типов для уникальных имен действий
 enum QUESTION_THUNK_TYPES_PREFIX {
   INIT = "question/loadquestions",
 }
 
 export const loadQuestions = createAsyncThunk<
-  Question,
+  QuestionList,
   void,
   { rejectValue: RejectValue }
 >(QUESTION_THUNK_TYPES_PREFIX.INIT, async (_, { rejectWithValue }) => {

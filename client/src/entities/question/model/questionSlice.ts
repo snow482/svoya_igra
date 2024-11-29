@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Question, QuestionList } from "./index";
+import { QuestionList } from "./index";
 import { loadQuestions } from "./questionThunk";
 
 interface QuestionState {
   questions: QuestionList;
-  loading: boolean;
   error: string | null;
+  loading: boolean;
 }
 
 const initialState: QuestionState = {
   questions: [],
-  loading: false,
   error: null,
+  loading: false,
 };
 
 const questionSlice = createSlice({
@@ -22,12 +22,12 @@ const questionSlice = createSlice({
     builder
       .addCase(loadQuestions.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
 
       .addCase(loadQuestions.fulfilled, (state, action) => {
         state.loading = false;
-        state.books = action.payload;
+        state.questions = action.payload;
+        state.error = null;
       })
 
       .addCase(loadQuestions.rejected, (state, action) => {
