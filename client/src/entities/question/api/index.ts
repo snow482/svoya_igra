@@ -1,8 +1,8 @@
 import { axiosInstance } from "@/shared/lib/axiosInstance";
-import { Book, BookList } from "@/entities/book/model";
+import { QuestionList } from "@/entities/question/model";
 
 export class QuestionService {
-  static async getAllQuestions(): Promise<BookList> {
+  static async getAllQuestions(): Promise<QuestionList> {
     const response = await axiosInstance.get("/questions");
     return response.data.questions;
   }
