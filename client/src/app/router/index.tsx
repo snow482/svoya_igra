@@ -8,7 +8,7 @@ export enum CLIENT_ROUTES {
     REG = '/registration',
     QUESTIONS = '/questions',
     NOT_FOUND = '*',
-    UPDATE = '/question/:id'
+    UPDATE = '/questions/:id'
 }
 
 export const router = createBrowserRouter([

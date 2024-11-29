@@ -39,10 +39,10 @@ class UserController {
     const { id } = req.params;
 
     try {
-      const updated = await UserService.update(req.body, id);
+      const updatedUser = await UserService.update(id, points);
 
-      if (updated) {
-        res.status(200).json({ message: "success" });
+      if (updatedUser) {
+        res.status(200).json({ message: "success", updatedUser });
       } else {
         res.status(200).json({ message: "error" });
       }

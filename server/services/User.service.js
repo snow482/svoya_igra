@@ -34,13 +34,14 @@ class UserService {
     }
   }
 
-  static async update(data, id) {
+  static async update( id, points ) {
     try {
-      const [countUpdated] = await User.update(data, {
-        where: { id },
-      });
+      const user =await User.findByPk(id)
+      user.points = user.points + points
+      await user.save()
+      
 
-      return countUpdated;
+      return user;
     } catch (error) {
       throw new Error(error.message);
     }

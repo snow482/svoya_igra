@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./QuestionUpdate.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/rtkHooks";
-import { updateQuestion } from "@/entities/question/model/questionThunk";
+import { userPointsUpdate } from "@/entities/user/model/userThunk";
+
 
 export function QuestionUpdate() {
   const dispatch = useAppDispatch()
@@ -18,16 +19,14 @@ export function QuestionUpdate() {
   const handleAnswer = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      if (!question) {
+      if (!question || !user) {
         return
       }
       if (answer === question.answer) {
-        dispatch(updateUser(user.id));
+        dispatch(userPointsUpdate({id: user.id, points: question.price}))
+        navigate('/questions')
         return
       }
-    
-      
-      navigate('/questions')
     } catch (error) {
       console.error("Error deleting question:", error);
     }
@@ -37,6 +36,7 @@ export function QuestionUpdate() {
     <section>
       <div className="question-update-item">
         <form onSubmit={handleAnswer}>
+          <p>{question?.description}</p>
           <p>Ответ: </p>
           <input
             type="text"

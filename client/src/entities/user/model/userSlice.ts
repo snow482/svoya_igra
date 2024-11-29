@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserWithoutPasswordType } from ".";
-import { refreshAccessToken, registration, authorization, logout } from "./userThunk";
+import { UserWithoutPasswordType, UserUpdateType} from ".";
+import { refreshAccessToken, registration, authorization, logout, userPointsUpdate } from "./userThunk";
 
 // Определяем тип состояния для хранилища пользователя
 type UserState = {
-  user: UserWithoutPasswordType | null;
+  user: UserWithoutPasswordType | UserUpdateType | null;
   error: string | null;
   loading: boolean;
 };
@@ -76,6 +76,19 @@ const userSlice = createSlice({
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Logout fail";
+      })
+      
+      .addCase(userPointsUpdate.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(userPointsUpdate.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload; // Очищаем пользователя после выхода
+        state.error = null;
+      })
+      .addCase(userPointsUpdate.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message || "Points update fail;";
       });
   },
 });
