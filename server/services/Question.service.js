@@ -1,9 +1,9 @@
-const { Question } = require("../db/models");
+const { Question, Category } = require("../db/models");
 
 class QuestionService {
   static async getQuestions() {
     try {
-      const questions = await Question.findAll();
+      const questions = await Question.findAll({ include: Category });
       return questions;
     } catch (error) {
       console.log(error);
