@@ -1,1 +1,1 @@
-export { BooksPage } from './ui/BooksPage'
+export { BooksPage } from './ui/QuestionsPage'
