@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import {  UserWithoutPasswordType } from './index'
+import { UserWithoutPasswordType } from './index'
 import { UserService } from "../api";
 
 type RejectValue = {
@@ -43,10 +43,10 @@ export const authorization = createAsyncThunk<AuthResponse, { email: string, pas
   }
 });
 
-export const registration = createAsyncThunk<AuthResponse, { email: string, password: string }, { rejectValue: RejectValue }>(
-  USER_THUNK_TYPES_PREFIX.USER_REGISTRATION, async ({ email, password }, { rejectWithValue }) => {
+export const registration = createAsyncThunk<AuthResponse, { name: string, email: string, password: string }, { rejectValue: RejectValue }>(
+  USER_THUNK_TYPES_PREFIX.USER_REGISTRATION, async ({ name, email, password }, { rejectWithValue }) => {
   try {
-      return await UserService.registration(email, password);
+      return await UserService.registration( name, email, password );
   } catch (error) {
       const err = error as AxiosError<{ message: string }>
       return rejectWithValue({
