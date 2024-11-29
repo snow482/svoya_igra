@@ -21,7 +21,7 @@ export function RegistrationForm() {
             return alert('Pass no ok!')
         }
 
-        dispatch(registration( { email, password } ));
+        dispatch(registration( { name, email, password } ));
         navigate(CLIENT_ROUTES.HOME);
     }
 
